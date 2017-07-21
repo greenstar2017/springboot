@@ -28,6 +28,7 @@ public class MsgProducer {
 			@Override
 			public Object doInKafka(Producer<String, String> producer) {
 				// 这里可以编写kafka原生的api操作
+				System.out.println("doInKafka");
 				return null;
 			}
 		});
@@ -37,16 +38,17 @@ public class MsgProducer {
 			@Override
 			public void onSuccess(String topic, Integer partition, String key, String value,
 					RecordMetadata recordMetadata) {
-
+				System.out.println("onSuccess");
 			}
 
 			@Override
 			public void onError(String topic, Integer partition, String key, String value, Exception exception) {
-
+				System.out.println("onError");
 			}
 
 			@Override
 			public boolean isInterestedInSuccess() {
+				System.out.println("isInterestedInSuccess");
 				return false;
 			}
 		});
