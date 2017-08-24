@@ -18,9 +18,12 @@ public class MsgProducer {
 	@Autowired
 	private KafkaTemplate<String, String> kafkaTemplate;
 
-	public void send() {
-		kafkaTemplate.send("my-replicated-topic", "xiaojf");
-		kafkaTemplate.send("my-replicated-topic", "xiaojf");
+	public void send(String msg) {
+		
+		System.out.println("partitions count " + kafkaTemplate.partitionsFor("topic1"));
+		
+		
+		kafkaTemplate.send("topic1", msg);
 
 		kafkaTemplate.metrics();
 
